@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kairn: AI Strength Coach for iPhone</title>
+<meta name="description" content="Kairn builds your gym or home workout plan in two questions, guides every set, and adapts as you get stronger. Private by design. Made for iPhone and iPhone Duo.">
+<link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F7FA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kairn: build strength, stone by stone">
+<meta property="og:description" content="An AI strength coach that plans every session, guides every set and adapts as you get stronger.">
+<meta property="og:image" content="img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root {
+  --ink: #0E1620; --ink-2: #3B5266; --signal: #2A5FE6; --signal-text: #1F4FC8; --ice: #7CE7FF;
+  --snow: #F3F7FA; --frost: #DCE7F0; --surface: #FFFFFF; --hairline: #D5DFE8; --ember: #B45309;
+  --radius: 28px; --max: 1080px;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #F3F7FA; --ink-2: #A9BCCD; --signal: #8FB4FF; --signal-text: #8FB4FF; --snow: #0B1118; --frost: #111A24; --surface: #17212C; --hairline: #26313D; --ember: #F5B266; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--snow); color: var(--ink); font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif; }
+a { color: var(--signal-text); }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+header.top { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+.brand { display: flex; align-items: center; gap: 10px; font: 600 20px/1 ui-rounded, -apple-system, sans-serif; letter-spacing: .02em; color: var(--ink); text-decoration: none; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; }
+nav a { margin-left: 18px; color: var(--ink-2); text-decoration: none; font-size: 15px; }
+.hero { position: relative; border-radius: var(--radius); overflow: hidden; min-height: 520px; display: flex; align-items: center; background: var(--frost) url(img/hero.jpg) right center / cover no-repeat; }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(243,247,250,.96) 0%, rgba(243,247,250,.85) 42%, rgba(243,247,250,0) 70%); }
+@media (prefers-color-scheme: dark) { .hero::before { background: linear-gradient(90deg, rgba(11,17,24,.95) 0%, rgba(11,17,24,.82) 45%, rgba(11,17,24,0) 75%); } }
+.hero .copy { position: relative; padding: 48px; max-width: 560px; }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--signal-text); }
+h1 { font: 700 clamp(36px, 6vw, 58px)/1.05 ui-rounded, -apple-system, sans-serif; margin: 12px 0 16px; letter-spacing: -.01em; }
+.lead { font-size: 20px; color: var(--ink-2); margin: 0 0 28px; }
+.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--snow); padding: 14px 22px; border-radius: 999px; font-weight: 600; text-decoration: none; }
+.cta small { opacity: .75; font-weight: 500; }
+.note { margin-top: 12px; font-size: 14px; color: var(--ink-2); }
+section { padding: 72px 0 0; }
+h2 { font: 700 clamp(28px, 4vw, 38px)/1.15 ui-rounded, -apple-system, sans-serif; margin: 0 0 12px; }
+.sub { color: var(--ink-2); margin: 0 0 32px; max-width: 640px; font-size: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border-radius: 24px; padding: 24px; box-shadow: 0 10px 30px rgba(14,22,32,.06); }
+.card h3 { margin: 12px 0 6px; font-size: 18px; }
+.card p { margin: 0; color: var(--ink-2); font-size: 16px; }
+.dot { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: color-mix(in srgb, var(--signal) 14%, transparent); color: var(--signal-text); font-weight: 700; }
+.split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; align-items: stretch; }
+.split .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.split .photos img { width: 100%; height: 100%; object-fit: cover; border-radius: 22px; min-height: 260px; }
+@media (max-width: 760px) { .split { grid-template-columns: 1fr; } .hero .copy { padding: 28px; } .hero { min-height: 560px; align-items: flex-start; background-position: 70% bottom; } .hero::before { background: linear-gradient(180deg, rgba(243,247,250,.97) 0%, rgba(243,247,250,.8) 50%, rgba(243,247,250,0) 80%); } nav { display: none; } }
+@media (max-width: 760px) and (prefers-color-scheme: dark) { .hero::before { background: linear-gradient(180deg, rgba(11,17,24,.96) 0%, rgba(11,17,24,.78) 50%, rgba(11,17,24,0) 80%); } }
+.privacy { display: flex; gap: 24px; align-items: flex-start; }
+.privacy .lock { font-size: 34px; }
+.support { background: var(--surface); border-radius: var(--radius); padding: 32px; }
+.email { font-weight: 600; font-size: 19px; }
+footer { padding: 56px 0 40px; color: var(--ink-2); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; }
+footer a { color: var(--ink-2); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./"><img src="img/apple-touch-icon.png" alt="">kairn</a>
+    <nav><a href="#features">Features</a><a href="#duo">iPhone Duo</a><a href="#support">Support</a><a href="privacy.html">Privacy</a></nav>
+  </header>
+
+  <div class="hero">
+    <div class="copy">
+      <div class="eyebrow">AI strength coach for iPhone</div>
+      <h1>Build strength, stone by stone.</h1>
+      <p class="lead">Kairn builds your gym or home workout plan in two questions, guides every set, and adapts as you get stronger.</p>
+      <span class="cta" role="note">Coming to the App Store <small>· 23 October</small></span>
+      <p class="note">Free of accounts and tracking. Made for iPhone and iPhone Duo.</p>
+    </div>
+  </div>
+
+  <section id="features">
+    <h2>Know exactly what to do today</h2>
+    <p class="sub">Every session is planned, explained and adjusted for you, so you can focus on the lift in front of you.</p>
+    <div class="grid">
+      <div class="card"><div class="dot">1</div><h3>A plan in a minute</h3><p>Pick your goal and where you train. Kairn builds upper, lower and full-body days around the equipment you have.</p></div>
+      <div class="card"><div class="dot">↑</div><h3>Weights that adapt</h3><p>Hit the top of the rep range on every set and the weight goes up next time. Had a hard day? It stays put.</p></div>
+      <div class="card"><div class="dot">●</div><h3>Log a set in one tap</h3><p>Big controls, undo and edit, a plate calculator, and a rest timer on your Lock Screen and Dynamic Island.</p></div>
+      <div class="card"><div class="dot">“</div><h3>Talk to your coach</h3><p>Say “done”, “skip rest” or “what's next” when your hands are full, or ask anything in chat.</p></div>
+      <div class="card"><div class="dot">⏱</div><h3>Short on time?</h3><p>Fit today's session into 20, 30 or 45 minutes with one tap, and get the full session back just as easily.</p></div>
+      <div class="card"><div class="dot">★</div><h3>See your progress</h3><p>Weekly rings, consistency, training time, volume and personal records, with a celebration for every new one.</p></div>
+    </div>
+  </section>
+
+  <section id="duo">
+    <div class="split">
+      <div class="card">
+        <div class="eyebrow">Made for iPhone Duo</div>
+        <h2 style="margin-top:10px">Unfold your workout.</h2>
+        <p class="sub" style="margin-bottom:0">Open iPhone Duo and Kairn puts the exercise on one side and big, easy controls on the other. Navigation moves into the strip beside the status bar, so the whole screen goes to your training. Prop it up for a hands-free view you can read across the room.</p>
+      </div>
+      <div class="photos">
+        <img src="img/squat.jpg" alt="A woman performing a barbell back squat in a bright gym" loading="lazy">
+        <img src="img/mobility.jpg" alt="A woman in a half-kneeling hip-flexor stretch on a mat" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="privacy card">
+      <div class="lock" aria-hidden="true">🔒</div>
+      <div>
+        <h2>Private by design</h2>
+        <p class="sub" style="margin-bottom:8px">No account, no analytics, no ads. Your plan, workouts and voice stay on your iPhone. The coach uses Apple Intelligence on device where available, and Kairn saves to Apple Health only if you choose.</p>
+        <a href="privacy.html">Read the privacy policy →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="support">
+      <h2>Support</h2>
+      <p class="sub">Questions, feedback or a bug to report? Write to us and we'll get back to you, usually within two working days.</p>
+      <p class="email"><a href="mailto:aelkahwagydeveloper@gmail.com?subject=Kairn%20support">aelkahwagydeveloper@gmail.com</a></p>
+      <p class="note">Tip: in the app, Settings › Send feedback includes your app version automatically.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Kairn. Kairn is a fitness app, not a medical service.</span>
+    <span><a href="privacy.html">Privacy Policy</a> · <a href="#support">Support</a></span>
+  </footer>
+</div>
+</body>
+</html>
